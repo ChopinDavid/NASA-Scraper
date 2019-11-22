@@ -1,7 +1,7 @@
 <?php
 
 // Create connection
-$con=mysqli_connect("localhost","my_username","my_password","my_database");
+$con=mysqli_connect("localhost","mappieap_bandmat","BaNdMaTe4LyFe!%~","mappieap_asteroids");
 
 // Check connection
 if (mysqli_connect_errno())
