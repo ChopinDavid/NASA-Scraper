@@ -11,7 +11,6 @@ if (mysqli_connect_errno())
 
 $id = strval($_GET['id']);
 $name = strval($_GET['name']);
-echo $name;
 $estimatedDiameterMin = floatval($_GET['estimatedDiameterMin']);
 $estimatedDiameterMax = floatval($_GET['estimatedDiameterMax']);
 $isPotentiallyHazardous = intval($_GET['isPotentiallyHazardous']);

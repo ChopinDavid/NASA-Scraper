@@ -7,7 +7,8 @@ var year = 1900;
 let apiKey = "******";
 
 function scrapeURL() {
-    let url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${year}-${month}-${day}&end_date=${year}-${month}-${day}}&api_key=${apiKey}`;
+    let url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${year}-${month}-${day}&end_date=${year}-${month}-${day}&api_key=${apiKey}`;
+    console.log(url);
 
     request.get(
         url,
