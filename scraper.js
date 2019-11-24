@@ -24,6 +24,7 @@ function scrapeURL() {
             } else {
                 dateString += `-${day}`;
             }
+            console.log(JSON.parse(body));
             if (JSON.parse(body)["near_earth_objects"] != undefined) {
                 let nearEarthObjects = JSON.parse(body)["near_earth_objects"][dateString];
                 for (i in nearEarthObjects) {
@@ -48,29 +49,33 @@ function scrapeURL() {
                         function(error, response, body) {
                             setTimeout(function() {
                                 console.log(error);
-                            }, 5000);
+                            }, 1000);
                         }
                     );
                 }
-            }
+                setTimeout(function() {
+                    if (day == 31) {
+                        if (month == 12) {
+                            year += 1;
+                            month = 1;
+                            day = 1;
+                        } else {
+                            month += 1;
+                            day = 1;
+                        }
 
-            setTimeout(function() {
-                if (day == 31) {
-                    if (month == 12) {
-                        year += 1;
-                        month = 1;
-                        day = 1;
                     } else {
-                        month += 1;
-                        day = 1;
+                        day += 1;
                     }
 
-                } else {
-                    day += 1;
-                }
-
-                scrapeURL();
-            }, 1000);
+                    scrapeURL();
+                }, 1000);
+            } else if (JSON.parse(body)["error"]["code"] == "OVER_RATE_LIMIT") {
+                setTimeout(function() {
+                    console.log("Waiting 3600 seconds and rescraping...")
+                    scrapeURL();
+                }, 3600000);
+            }
         }
     );
 }
