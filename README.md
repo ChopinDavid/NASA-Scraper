@@ -11,7 +11,7 @@ To use this scraper, you are going to need a remotely hosted MySQL server as wel
 The first thing we have to do is download the project. Once the project is downloaded, unzip it.
 To make scraper.js actually post the NASA NeoWs data to your own backend, we need to make use of our remotely hosted php file. Simply put the postAsteroid.php file in your `public_html` directory of your remote file server. You must then place the credentials for your database connection, i.e. the host, priveleged username, this username's password, and the database name, respectively. It will look something like this: `$con=mysqli_connect("localhost","my_username","my_password","my_database");`. Make sure that in MySQL, `my_database` has tables named `NearEarthObjects` and `CloseApproaches`. These can be made by running the following script in your MySQL server:
 
-```php
+```sql
 CREATE TABLE CloseApproaches(
     approachDate BIGINT(14),
     approachSpeed FLOAT,
