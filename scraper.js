@@ -4,7 +4,7 @@ var month = 1;
 var day = 1;
 var year = 1900;
 
-let apiKey = "******";
+let apiKey = "****";
 
 function scrapeURL() {
     let url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${year}-${month}-${day}&end_date=${year}-${month}-${day}&api_key=${apiKey}`;
@@ -71,8 +71,8 @@ function scrapeURL() {
                     scrapeURL();
                 }, 1000);
             } else if (JSON.parse(body)["error"]["code"] == "OVER_RATE_LIMIT") {
+                console.log("Waiting 3600 seconds and rescraping...")
                 setTimeout(function() {
-                    console.log("Waiting 3600 seconds and rescraping...")
                     scrapeURL();
                 }, 3600000);
             }
