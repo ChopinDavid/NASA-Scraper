@@ -75,7 +75,7 @@ function scrapeURL() {
                 setTimeout(function() {
                     scrapeURL();
                 }, 3600000);
-            } else {
+            } else if (JSON.parse(body)["http_error"] == "BAD_REQUEST") {
                 month += 1;
                 day = 1;
                 scrapeURL();
