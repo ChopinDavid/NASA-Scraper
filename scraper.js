@@ -1,10 +1,10 @@
 var request = require('request');
 
-var month = 1;
 var day = 1;
+var month = 1;
 var year = 1900;
 
-let apiKey = "****";
+let apiKey = "******";
 
 function scrapeURL() {
     let url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${year}-${month}-${day}&end_date=${year}-${month}-${day}&api_key=${apiKey}`;
