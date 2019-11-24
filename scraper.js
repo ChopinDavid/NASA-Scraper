@@ -70,11 +70,15 @@ function scrapeURL() {
 
                     scrapeURL();
                 }, 1000);
-            } else if (JSON.parse(body)["error"]["code"] == "OVER_RATE_LIMIT") {
+            } else if (JSON.parse(body)["error"] != undefined && JSON.parse(body)["error"]["code"] == "OVER_RATE_LIMIT") {
                 console.log("Waiting 3600 seconds and rescraping...")
                 setTimeout(function() {
                     scrapeURL();
                 }, 3600000);
+            } else {
+                month += 1;
+                day = 1;
+                scrapeURL();
             }
         }
     );
